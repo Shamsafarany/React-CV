@@ -50,9 +50,9 @@ function Education() {
       {submittedData && (
         <div>
           <h3>Submitted Info:</h3>
-          <p>Univeristy: {schoolName}</p>
-          <p>Degree: {degree}</p>
-          <p>Date Earned: {date}</p>
+          <p>Univeristy: {submittedData.schoolName}</p>
+          <p>Degree: {submittedData.degree}</p>
+          <p>Date Earned: {submittedData.date}</p>
         </div>
       )}
       <hr />
