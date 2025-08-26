@@ -5,7 +5,9 @@ function General() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState();
 
-  function handleName(e){
+  const [submittedData, setSubmittedData] = useState(null);
+
+  function handleName(e) {
     setName(e.target.value);
   }
   function handleEmail(e) {
@@ -14,18 +16,43 @@ function General() {
   function handlePhone(e) {
     setPhone(e.target.value);
   }
+  function handleSubmit() {
+    setSubmittedData({ name, email, phone });
+  }
 
   return (
     <>
       <h2>General Info</h2>
-      <input type="text" placeholder="Name" value={name} onChange={handleName}/> <br />
-      <p>Name: {name}</p>
-      <input type="email" placeholder="Email" value={email} onChange={handleEmail}/>
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={handleName}
+      />{" "}
       <br />
-      <p>Email: {email}</p>
-      <input type="number" placeholder="Number" value={phone} onChange={handlePhone} /> <br />
-      <p>Phone number: {phone}</p>
-
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={handleEmail}
+      />
+      <br />
+      <input
+        type="number"
+        placeholder="Number"
+        value={phone}
+        onChange={handlePhone}
+      />{" "}
+      <br />
+      <button onClick={handleSubmit}>Submit Info</button>
+      {submittedData && (
+        <div>
+          <h3>Submitted Info: </h3>
+          <p>Name: {submittedData.name}</p>
+          <p>Email: {submittedData.email}</p>
+          <p>Phone: {submittedData.phone}</p>
+        </div>
+      )}
       <hr />
     </>
   );
