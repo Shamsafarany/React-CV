@@ -7,6 +7,8 @@ function General() {
 
   const [submittedData, setSubmittedData] = useState(null);
 
+  const [isEditing, setIsEditing] = useState(true);
+
   function handleName(e) {
     setName(e.target.value);
   }
@@ -18,43 +20,55 @@ function General() {
   }
   function handleSubmit() {
     setSubmittedData({ name, email, phone });
+    setIsEditing(false);
   }
-
+  function handleEdit(){
+    setIsEditing(true);
+  }
   return (
-    <>
+    <div>
       <h2>General Info</h2>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={handleName}
-      />{" "}
-      <br />
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={handleEmail}
-      />
-      <br />
-      <input
-        type="number"
-        placeholder="Number"
-        value={phone}
-        onChange={handlePhone}
-      />{" "}
-      <br />
-      <button onClick={handleSubmit}>Submit Info</button>
-      {submittedData && (
-        <div>
-          <h3>Submitted Info: </h3>
-          <p>Name: {submittedData.name}</p>
-          <p>Email: {submittedData.email}</p>
-          <p>Phone: {submittedData.phone}</p>
-        </div>
+     {isEditing ? (
+      <>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={handleName}
+        />{" "}
+        <br />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={handleEmail}
+        />
+        <br />
+        <input
+          type="number"
+          placeholder="Number"
+          value={phone}
+          onChange={handlePhone}
+        />{" "}
+        <br />
+        <button onClick={handleSubmit}>Submit Info</button>
+      </>
+      ): (
+      <>
+        {" "}
+        {submittedData && (
+          <div>
+            <h3>Submitted Info: </h3>
+            <p>Name: {submittedData.name}</p>
+            <p>Email: {submittedData.email}</p>
+            <p>Phone: {submittedData.phone}</p>
+            <button onClick={handleEdit}>Edit</button>
+          </div>
+        )}
+      </>
       )}
       <hr />
-    </>
+    </div>
   );
 }
 
