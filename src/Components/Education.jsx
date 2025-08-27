@@ -45,9 +45,11 @@ function Education() {
             onChange={handleDegree}
           />
           <br />
+          <label for="dateEarned">Date Earned: </label>
           <input
             type="date"
             placeholder="Date earned"
+            id="dateEarned"
             value={date}
             onChange={handleDate}
           />{" "}
